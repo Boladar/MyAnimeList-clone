@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block content_block %}
+    <div class=container>
+    
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit">Save changes</button>
+        </form>
+        
+    </div>
+{% endblock content_block %}

@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from accounts.forms import SignUpForm
-from django.views.generic import CreateView,DetailView
-
+from django.views.generic import CreateView,DetailView,UpdateView
+from accounts.forms import ProfileForm
 from accounts.models import UserProfile
+from django.shortcuts import get_object_or_404 
 
 def SignUp(request):
     
@@ -24,3 +25,22 @@ class ProfileDetailView(DetailView):
     model = UserProfile
     slug_field = 'pk'
     template_name = 'accounts/profile_detail.html'
+
+class ProfileUpdateView(UpdateView):
+    model = UserProfile
+    form_class = ProfileForm
+    slug_field = 'pk'
+    template_name='accounts/profile_update.html'
+
+    def get_initial(self):
+        initial = super(ProfileUpdateView,self).get_initial()
+
+        profile_object = self.get_object()
+
+        initial['profile_picture'] = profile_object.profile_picture
+
+        return initial
+
+    def get_object(self,*args,**kwargs):
+        profile = get_object_or_404(UserProfile,pk=self.kwargs['slug'])
+        return profile
