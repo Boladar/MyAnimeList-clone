@@ -4,19 +4,15 @@
 
 {% block content_block %}
 
-    <h1>Anime</h1>
     <ul>
-    {% for anime in object_list %}
-        
-        <div class='container'>
-            <div class="list-group">
-                {%include 'anime_database/_animeModel.html' %}
-            </div>
-        </div>
-
-    {% endfor %}
+      {% for anime in object_list %}  
+          <div class='container'>
+            {%include 'anime_database/_animeModel.html' %}
+            <hr>
+          </div>
+      {% endfor %}
     </ul>
-    
+
     <div class="pagination">
         <span class="step-links">
           {% if page_obj.has_previous %}

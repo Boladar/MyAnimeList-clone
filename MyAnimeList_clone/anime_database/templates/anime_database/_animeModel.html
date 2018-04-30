@@ -1,7 +1,23 @@
-{% load static %}
+{% load staticfiles %}
 
-<div class='anime-model'>
-    <a href="{% url 'anime_database:anime_detail' slug=anime.title %}">{{anime.title}}</a>
+<div class='anime-card'>  
+    <div class='cover'>
+        <img src="{{anime.cover.url}}" alt="">
+    </div>
+    <div class='info'>
+        <div class='title'>
+            <a href="{% url 'anime_database:anime_detail' slug=anime.title %}">{{anime.title}}</a>
+        </div>
+        <div class='number-of-episodes'>
+            <h6>{{anime.airing_type}}</h6>
+        </div>
+        <div class='score'>
+            <p>score</p>
+        </div>
+        <div class='tags'>
+
+        </div>
+    </div>
 </div>
 
 

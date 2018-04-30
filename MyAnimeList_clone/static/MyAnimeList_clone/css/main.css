@@ -1,0 +1,50 @@
+.anime-list{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 100%;    
+}
+
+.anime-card{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 3fr 9fr;
+    grid-template-areas: " cover info";
+
+}
+
+.info{
+    grid-area: info;
+    display: grid;
+    width: 100%;
+    grid-column-gap: 5px;
+    grid-template-columns: auto auto;
+    grid-auto-rows: 2fr 2fr 8fr;
+    grid-template-areas: "title title"
+                         " number-of-episodes ."
+                         " tags score";
+}
+
+.title{
+    grid-area: title;
+}
+
+.title a{
+    color: black;
+    font-size: 25px;
+}
+
+.cover{
+    grid-area: cover;
+}
+
+.number-of-episodes{
+    grid-area: number-of-episodes;
+}
+
+.score{
+    grid-area: score;
+}
+
+.tags{
+    grid-area: tags;
+}
