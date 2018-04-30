@@ -3,12 +3,23 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.urls import reverse
+
+import os
+from MyAnimeList_clone.settings import MEDIA_ROOT
 # Create your models here.
 
+def delete_existing_profile_picture(instance,filename):
+    file_path = os.path.join(MEDIA_ROOT,filename)
+    os.remove(file_path)
+    
 def user_direcotry_path(instance,filename):
     file_extension = filename[-3:]
     name = instance.user.username
-    return 'profile_pictures/' + name + '.' +  file_extension
+
+    file_path = 'profile_pictures/' + name + '.' + file_extension
+
+    delete_existing_profile_picture(instance,file_path)
+    return file_path
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
