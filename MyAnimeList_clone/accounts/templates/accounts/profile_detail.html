@@ -1,10 +1,18 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
+{% load static %}
 
 {% block content_block %}
     <div class=container>
     
         <h1> {{object.username}} </h1>
+
+        {% if object.profile_picture %}
+            <img src="{{object.profile_picture.url}}" alt="">
+        {% else %}
+            <h3>cannot show profile picture</h3>
+        {% endif %}
+        
 
     </div>
 {% endblock content_block %}

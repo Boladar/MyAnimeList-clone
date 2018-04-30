@@ -18,9 +18,12 @@ from django.urls import path,include
 
 from . import views as mainViews
 
+from django.conf.urls.static import static
+from . import settings
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',mainViews.IndexPage.as_view(),name='index'),
     path('profile/',include('accounts.urls',namespace='accounts')),
     path('profile/',include('django.contrib.auth.urls')),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

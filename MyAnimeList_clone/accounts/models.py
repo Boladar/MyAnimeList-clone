@@ -5,12 +5,20 @@ from django.dispatch import receiver
 from django.urls import reverse
 
 import os
+import glob
 from MyAnimeList_clone.settings import MEDIA_ROOT
 # Create your models here.
 
 def delete_existing_profile_picture(instance,filename):
-    file_path = os.path.join(MEDIA_ROOT,filename)
-    os.remove(file_path)
+    
+    if os.path.isfile(os.path.join(MEDIA_ROOT,filename[:-3] + 'jpg')):
+        path = os.path.join(MEDIA_ROOT,filename[:-3] + 'jpg')
+        os.remove(path)
+
+    if os.path.isfile(os.path.join(MEDIA_ROOT,filename[:-3] + 'png')):
+        path = os.path.join(MEDIA_ROOT,filename[:-3] + 'png')
+        os.remove(path)
+    
     
 def user_direcotry_path(instance,filename):
     file_extension = filename[-3:]
