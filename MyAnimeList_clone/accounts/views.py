@@ -6,6 +6,8 @@ from accounts.forms import ProfileForm
 from accounts.models import UserProfile
 from django.shortcuts import get_object_or_404 
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 def SignUp(request):
     
     if request.method == 'POST':
@@ -26,7 +28,7 @@ class ProfileDetailView(DetailView):
     slug_field = 'pk'
     template_name = 'accounts/profile_detail.html'
 
-class ProfileUpdateView(UpdateView):
+class ProfileUpdateView(LoginRequiredMixin,UpdateView):
     model = UserProfile
     form_class = ProfileForm
     slug_field = 'pk'

@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap4',
     'accounts',
+    'anime_list',
+    'anime_database',
     
 ]
 
@@ -138,3 +140,4 @@ MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
 LOGOUT_REDIRECT_URL ='index'
+LOGIN_URL = 'profile/login/'
