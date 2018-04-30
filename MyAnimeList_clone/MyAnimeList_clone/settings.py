@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap4',
+    'multiselectfield',
     'accounts',
     'anime_list',
     'anime_database',
