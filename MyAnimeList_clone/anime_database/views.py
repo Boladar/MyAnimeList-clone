@@ -8,7 +8,7 @@ class AnimeList(ListView):
     
     template_name = 'anime_database/anime_list.html'
     model = AnimeModel
-    paginate_by = 2
+    paginate_by = 5
 
 class AnimeDetail(DetailView):
     model = AnimeModel

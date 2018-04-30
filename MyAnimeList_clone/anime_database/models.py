@@ -21,10 +21,14 @@ class AnimeModel(models.Model):
     airing_finish_date = models.DateField(blank=True, null=True)
     genre = MultiSelectField(choices=GENRES,blank=True, null=True)
     cover = models.ImageField(upload_to='anime_covers/',blank=True, null=True)
+    number_of_episodes = models.IntegerField(blank=True, null=True)
+
+    def __str__(self):
+        return self.title
 
 # TODO: 
 class AnimeReview(models.Model):
-    author = models.ForeignKey('accounts.UserProfile',on_delete=models.CASCADE) # propably to be changed later
+    author = models.ForeignKey('accounts.UserProfile',on_delete=models.PROTECT) # propably to be changed later
 
 
     

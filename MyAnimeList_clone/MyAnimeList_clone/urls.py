@@ -26,5 +26,6 @@ urlpatterns = [
     path('',mainViews.IndexPage.as_view(),name='index'),
     path('profile/',include('accounts.urls',namespace='accounts')),
     path('profile/',include('django.contrib.auth.urls')),
+    path('profile/list/',include('anime_list.urls',namespace='anime_list')),
     path('anime/',include('anime_database.urls',namespace='anime_database')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
