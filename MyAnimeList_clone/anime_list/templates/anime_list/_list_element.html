@@ -1,0 +1,23 @@
+{% load staticfiles %}
+
+<div class='anime-list-element'>
+
+    <div class='anime-list-element-cover'>
+        <img src="{{list_element.anime.cover.url}}">
+    </div>
+
+    <div class='anime-list-element-title'>
+        <h4>{{list_element.anime.title}}</h4>
+    </div>
+
+    <div class='anime-list-element-score'>
+        {{list_element.score}}
+    </div>
+
+    <div class='anime-list-element-progress'>
+        {{list_element.progress}}
+    </div>  
+
+    
+
+</div>
